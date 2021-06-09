@@ -24,9 +24,15 @@ export default function Home() {
       <Link className="App-link" to={`/companies`}>
         See List of Companies (Example)
       </Link>
+        <Link className="App-link" to={`/appliers`}>
+            See List of Appliers (Example)
+        </Link>
       <Link className="App-link" to={`/conversation`}>
         Go To Conversation (Example)
       </Link>
+        <Link className="App-link" to={`/conversationMessages`}>
+            Go to Conversation's Messages (Example)
+        </Link>
     </>
   );
 }

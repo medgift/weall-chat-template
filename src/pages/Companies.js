@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Backend } from "../services/backend";
+//import {CompaniesList} from "../components/companies-list/companies-list";
 
 export default function Companies() {
+
   // Hold the list of companies in the component state
   const [companies, setCompanies] = useState([]);
 
