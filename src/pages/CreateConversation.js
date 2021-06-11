@@ -3,7 +3,7 @@ import { Backend } from "../services/backend";
 import { useHistory } from "react-router-dom";
 
 export default function CreateConversation() {
-  const [idUserApplier, setIdUserApplier] = useState("");
+  const [idUserApplier, setIdUserApplier] = useState("40"); // TODO Récupérer valeur depuis le Context
   const [idUserEnterprise, setIdUserEnterprise] = useState("");
 
   const history = useHistory();

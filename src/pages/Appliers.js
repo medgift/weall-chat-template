@@ -9,7 +9,7 @@ export default function Appliers() {
   useEffect(() => {
     async function fetchAppliers() {
       try {
-        let appliers = await Backend.appliers();
+        let appliers = await Backend.getAppliers();
         setAppliers(appliers);
       } catch (e) {
         console.error(e);

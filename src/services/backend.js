@@ -17,16 +17,20 @@ export const Backend = {
     });
   },
 
-  users: async function () {
+  getUsers: async function () {
     return request(ENDPOINTS.USERS);
   },
 
-  companies: async function () {
+  getCompanies: async function () {
     return request(ENDPOINTS.COMPANIES);
   },
 
-  conversations: async function () {
+  getConversations: async function () {
     return request(ENDPOINTS.CONVERSATION);
+  },
+
+  getUserConversations: async function (idUser1) {
+    return request(ENDPOINTS.CONVERSATION + "/" + idUser1);
   },
 
   createConversation: async function (idUser1, idUser2) {
@@ -37,11 +41,18 @@ export const Backend = {
     return request(ENDPOINTS.CONVERSATION + "/" + idUser1 + "/" + idUser2, {method: "DELETE"});
   },
 
-  appliers: async function () {
+  getAppliers: async function () {
     return request(ENDPOINTS.APPLIERS);
   },
 
-  conversationMessages: async function (idUser1, idUser2) {
+  getConversationMessages: async function (idUser1, idUser2) {
     return request(ENDPOINTS.CONVERSATIONMESSAGES + "/" + idUser1 + "/" + idUser2);
+  },
+
+  sendMessage: async function (idUser1, idUser2, message) {
+    return request(ENDPOINTS.CONVERSATIONMESSAGES + "/" + idUser1 + "/" + idUser2,{
+      method: "POST",
+      data: { message },
+    });
   },
 };

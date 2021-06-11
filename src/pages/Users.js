@@ -9,7 +9,7 @@ export default function Users() {
   useEffect(() => {
     async function fetchUsers() {
       try {
-        let users = await Backend.users();
+        let users = await Backend.getUsers();
         setUsers(users);
       } catch (e) {
         console.error(e);

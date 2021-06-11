@@ -8,7 +8,7 @@ export default function ConversationMessages() {
     useEffect(() => {
         async function fetchconversationMessages(idUser1, idUser2) {
             try {
-                let conversationMessages = await Backend.conversationMessages(idUser1,idUser2);
+                let conversationMessages = await Backend.getConversationMessages(idUser1,idUser2);
                 setConversationMessages(conversationMessages);
                 console.log(conversationMessages);
             } catch (e) {
@@ -16,7 +16,7 @@ export default function ConversationMessages() {
             }
         }
 
-        fetchconversationMessages(1,2); // Mettre ici les id pour tester
+        fetchconversationMessages(40,2); // TODO Remplacer les id par les valeur Context
     }, []);
 
   return (

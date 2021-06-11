@@ -9,7 +9,7 @@ export default function Companies() {
   useEffect(() => {
     async function fetchCompanies() {
       try {
-        let companies = await Backend.companies();
+        let companies = await Backend.getCompanies();
         setCompanies(companies);
       } catch (e) {
         console.error(e);

@@ -2,9 +2,10 @@ import React, { useState } from "react";
 import { Backend } from "../services/backend";
 import { useHistory } from "react-router-dom";
 
-export default function CloseConversation() {
+export default function SendMessage() {
   const [idUserApplier, setIdUserApplier] = useState("40"); // TODO Récupérer valeur depuis le Context
   const [idUserEnterprise, setIdUserEnterprise] = useState("");
+  const [message, setMessage] = useState("");
 
   const history = useHistory();
 
@@ -16,14 +17,16 @@ export default function CloseConversation() {
     setIdUserEnterprise(e.target.value);
   };
 
+  const handleMessageChange = (e) => {
+    setMessage(e.target.value);
+  };
+
   const handleSubmit = async (e) => {
     // Stop the browser from submitting in the "traditional" way
     e.preventDefault();
 
     try {
-      console.log("applier: " + idUserApplier);
-      console.log("enterprise: " + idUserEnterprise);
-      await Backend.closeConversation(idUserApplier, idUserEnterprise);
+      await Backend.sendMessage(idUserApplier, idUserEnterprise, message);
 
       // Redirect to the home page
       history.push("/");
@@ -34,7 +37,7 @@ export default function CloseConversation() {
 
   return (
     <div>
-      <h1>Close a Conversation</h1>
+      <h1>Send a Message</h1>
 
       <form onSubmit={handleSubmit}>
         <input
@@ -53,7 +56,15 @@ export default function CloseConversation() {
           value={idUserEnterprise}
         />
         <br />
-        <button type="submit">Close Conversation</button>
+        <input
+            required
+            placeholder="message"
+            type="text"
+            onChange={handleMessageChange}
+            value={message}
+        />
+        <br />
+        <button type="submit">Send Message</button>
       </form>
     </div>
   );

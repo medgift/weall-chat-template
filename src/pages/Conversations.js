@@ -8,7 +8,7 @@ export default function Conversations() {
     useEffect(() => {
         async function fetchConversations() {
             try {
-                let conversations = await Backend.conversations();
+                let conversations = await Backend.getUserConversations(40); // TODO Changer valeur en dur par valeur Context
                 setConversations(conversations);
                 console.log(conversations);
             } catch (e) {
@@ -21,12 +21,17 @@ export default function Conversations() {
 
   return (
       <div>
-        <h1>Showing all Conversations</h1>
-        <ul>
-          {conversations.map((c) => (
-              <li key={c.id_user1}>{c.nom_entreprise + " - " + c.nom_postulant}</li>
-          ))}
-        </ul>
+        <h1>Showing User Conversations</h1>
+          {conversations.length > 0 ? (
+              <ul>
+                  {conversations.map((c) => (
+                      <li key={c.id_user2}>{c.nom_entreprise}</li>
+                  ))}
+              </ul>
+          ) : (
+              <p>No conversation yet</p>
+          )}
+
       </div>
   );
 

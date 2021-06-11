@@ -9,6 +9,7 @@ import Appliers from "./pages/Appliers";
 import Users from "./pages/Users";
 import CreateConversation from "./pages/CreateConversation";
 import CloseConversation from "./pages/CloseConversation";
+import SendMessage from "./pages/SendMessage";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
             <Route path="/createConversation" component={CreateConversation} />
             <Route path="/closeConversation" component={CloseConversation} />
             <Route path="/conversationMessages" component={ConversationMessages} />
+            <Route path="/sendMessage" component={SendMessage} />
             <Route path="/login" component={Login} />
           </Switch>
         </BrowserRouter>
