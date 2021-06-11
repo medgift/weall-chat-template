@@ -6,6 +6,7 @@ export const ENDPOINTS = {
   APPLIERS: `${process.env.REACT_APP_BACKEND_URL}/postulant`,
   CONVERSATIONS: `${process.env.REACT_APP_BACKEND_URL}/chat/conversation`,
   CONVERSATIONMESSAGES: `${process.env.REACT_APP_BACKEND_URL}/chat/message`,
+  OFFERS: `${process.env.REACT_APP_BACKEND_URL}/offre`,
 };
 
 export const Backend = {
@@ -26,6 +27,10 @@ export const Backend = {
 
   appliers: async function () {
     return request(ENDPOINTS.APPLIERS);
+  },
+
+  offers: async function(idOffer){
+    return request(ENDPOINTS.OFFERS + "/" + idOffer);
   },
 
   conversationMessages: async function (idUser1, idUser2) {

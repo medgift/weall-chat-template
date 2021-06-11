@@ -1,9 +1,36 @@
 import React, { useEffect, useState } from "react";
 import { Backend } from "../services/backend";
-//import {CompaniesList} from "../components/companies-list/companies-list";
+import "./style.css";
+import {CompaniesList} from "../components/companies-list/companiesList";
+
+/*class Companies extends React.Component {
+
+  constructor(){
+    super();
+
+    this.state = {
+      companies : [],
+    };
+  }
+
+  componentDidMount() {
+    fetch(Backend.companies())
+        .then(response => response.json())
+        .then(companies => this.setState({companies}));
+  }
+
+
+  render(){
+    return (
+        <div className="Companies">
+          <h1>List of Companies</h1>
+          <CompaniesList companies={this.state.companies}>
+          </CompaniesList>
+        </div>
+    );
+  } */
 
 export default function Companies() {
-
   // Hold the list of companies in the component state
   const [companies, setCompanies] = useState([]);
 
@@ -22,13 +49,11 @@ export default function Companies() {
   }, []);
 
   return (
-    <div>
-      <h1>List of Companies</h1>
-      <ul>
-        {companies.map((c) => (
-          <li key={c.id_entreprise}>{c.nom}</li>
-        ))}
-      </ul>
-    </div>
+      <div className="App-link">
+        <h1>List of Companies</h1>
+       <CompaniesList companies = {companies} />
+      </div>
   );
+
+
 }
