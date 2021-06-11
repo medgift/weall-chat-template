@@ -2,9 +2,10 @@ import request from "../utils/request";
 
 export const ENDPOINTS = {
   LOGIN: `${process.env.REACT_APP_BACKEND_URL}/user/login`,
+  USERS: `${process.env.REACT_APP_BACKEND_URL}/user`,
   COMPANIES: `${process.env.REACT_APP_BACKEND_URL}/entreprise`,
   APPLIERS: `${process.env.REACT_APP_BACKEND_URL}/postulant`,
-  CONVERSATIONS: `${process.env.REACT_APP_BACKEND_URL}/chat/conversation`,
+  CONVERSATION: `${process.env.REACT_APP_BACKEND_URL}/chat/conversation`,
   CONVERSATIONMESSAGES: `${process.env.REACT_APP_BACKEND_URL}/chat/message`,
 };
 
@@ -16,12 +17,24 @@ export const Backend = {
     });
   },
 
+  users: async function () {
+    return request(ENDPOINTS.USERS);
+  },
+
   companies: async function () {
     return request(ENDPOINTS.COMPANIES);
   },
 
   conversations: async function () {
-    return request(ENDPOINTS.CONVERSATIONS);
+    return request(ENDPOINTS.CONVERSATION);
+  },
+
+  createConversation: async function (idUser1, idUser2) {
+    return request(ENDPOINTS.CONVERSATION + "/" + idUser1 + "/" + idUser2, {method: "POST"});
+  },
+
+  closeConversation: async function (idUser1, idUser2) {
+    return request(ENDPOINTS.CONVERSATION + "/" + idUser1 + "/" + idUser2, {method: "DELETE"});
   },
 
   appliers: async function () {
