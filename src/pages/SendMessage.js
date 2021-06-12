@@ -1,21 +1,14 @@
-import React, { useState } from "react";
+import React, {useEffect, useState} from "react";
 import { Backend } from "../services/backend";
 import { useHistory } from "react-router-dom";
+import ConversationMessages from "./ConversationMessages";
 
-export default function SendMessage() {
-  const [idUserApplier, setIdUserApplier] = useState("40"); // TODO Récupérer valeur depuis le Context
-  const [idUserEnterprise, setIdUserEnterprise] = useState("");
+export default function SendMessage(props) {
+
   const [message, setMessage] = useState("");
+  const [newMessage, setNewMessage] = useState(0);
 
   const history = useHistory();
-
-  const handleIdUserApplierChange = (e) => {
-    setIdUserApplier(e.target.value);
-  };
-
-  const handleIdUserEnterpriseChange = (e) => {
-    setIdUserEnterprise(e.target.value);
-  };
 
   const handleMessageChange = (e) => {
     setMessage(e.target.value);
@@ -26,10 +19,12 @@ export default function SendMessage() {
     e.preventDefault();
 
     try {
-      await Backend.sendMessage(idUserApplier, idUserEnterprise, message);
+      await Backend.sendMessage(props.user1, props.user2, message);
 
       // Redirect to the home page
-      history.push("/");
+      //history.push("/");
+      setMessage("");
+      setNewMessage(newMessage+1);
     } catch (e) {
       console.error(e);
     }
@@ -37,23 +32,24 @@ export default function SendMessage() {
 
   return (
     <div>
+      <ConversationMessages user1={props.user1} user2={props.user2} newMessage={newMessage}></ConversationMessages>
       <h1>Send a Message</h1>
 
       <form onSubmit={handleSubmit}>
         <input
+          hidden
           required
           placeholder="id applier"
           type="text"
-          onChange={handleIdUserApplierChange}
-          value={idUserApplier}
+          value={props.user1}
         />
         <br />
         <input
+          hidden
           required
           placeholder="id enterprise"
           type="text"
-          onChange={handleIdUserEnterpriseChange}
-          value={idUserEnterprise}
+          value={props.user2}
         />
         <br />
         <input

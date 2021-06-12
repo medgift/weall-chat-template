@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Backend } from "../services/backend";
+import SendMessage from "./SendMessage";
 
-export default function ConversationMessages() {
+export default function ConversationMessages(props) {
 
     const [conversationMessages, setConversationMessages] = useState([]);
+
 
     // Load the companies on component mounting
     useEffect(() => {
@@ -11,21 +13,20 @@ export default function ConversationMessages() {
             try {
                 let conversationMessages = await Backend.getConversationMessages(idUser1,idUser2);
                 setConversationMessages(conversationMessages);
-                console.log(conversationMessages);
             } catch (e) {
                 console.error(e);
             }
         }
 
-        fetchconversationMessages(40, 2); // TODO Remplacer les id par les valeur Context
-    }, []);
+        fetchconversationMessages(props.user1, props.user2);
+    }, [props.user2, props.newMessage]);
 
   return (
       <div>
         <h1>Showing Conversation's Messages</h1>
         <ul>
-          {conversationMessages.map((c) => (
-              <li key={c.id_user1}>{c.message}</li>
+          {conversationMessages.map((c, index) => (
+              <li key={index}>{c.message}</li>
           ))}
         </ul>
       </div>

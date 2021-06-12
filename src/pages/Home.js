@@ -39,12 +39,12 @@ export default function Home() {
       <Link className="App-link" to={`/conversations`}>
         See List of User's Conversations
       </Link>
-        <Link className="App-link" to={`/conversationMessages`}>
-            Go to Conversation's Messages
-        </Link>
-        <Link className="App-link" to={`/sendMessage`}>
-            Send Message
-        </Link>
+        {/*<Link className="App-link" to={`/conversationMessages`}>*/}
+        {/*    Go to Conversation's Messages*/}
+        {/*</Link>*/}
+        {/*<Link className="App-link" to={`/sendMessage`}>*/}
+        {/*    Send Message*/}
+        {/*</Link>*/}
         <Link className="App-link" to={`/closeConversation`}>
             Close a Conversation
         </Link>
