@@ -33,7 +33,7 @@ export default function SendMessage(props) {
   return (
     <div>
       <ConversationMessages user1={props.user1} user2={props.user2} newMessage={newMessage}></ConversationMessages>
-      <h1>Send a Message</h1>
+      <h4>Send a message</h4>
 
       <form onSubmit={handleSubmit}>
         <input
@@ -43,7 +43,6 @@ export default function SendMessage(props) {
           type="text"
           value={props.user1}
         />
-        <br />
         <input
           hidden
           required
@@ -51,7 +50,6 @@ export default function SendMessage(props) {
           type="text"
           value={props.user2}
         />
-        <br />
         <input
             required
             placeholder="message"

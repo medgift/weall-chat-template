@@ -23,7 +23,7 @@ export default function ConversationMessages(props) {
 
   return (
       <div>
-        <h1>Showing Conversation's Messages</h1>
+        <h4>Conversation's messages</h4>
         <ul>
           {conversationMessages.map((c, index) => (
               <li key={index}>{c.message}</li>

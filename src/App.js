@@ -2,7 +2,6 @@ import "./App.css";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Conversations from "./pages/Conversations";
 import ConversationMessages from "./pages/ConversationMessages";
-import Companies from "./pages/Companies";
 import Login from "./pages/Login";
 import Home from "./pages/Home";
 import Appliers from "./pages/Appliers";
@@ -21,7 +20,6 @@ function App() {
           <Switch>
             <Route path="/" exact component={Home} />
             <Route path="/users" component={Users} />
-            <Route path="/companies" component={Companies} />
             <Route path="/appliers" component={Appliers} />
             <Route path="/offers" component={Offers} />
             <Route path="/conversations" component={Conversations} />
