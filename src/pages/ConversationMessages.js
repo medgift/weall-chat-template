@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import { Backend } from "../services/backend";
 
 export default function ConversationMessages() {
-  const [conversationMessages, setConversationMessages] = useState([]);
+
+    const [conversationMessages, setConversationMessages] = useState([]);
 
     // Load the companies on component mounting
     useEffect(() => {
@@ -16,7 +17,7 @@ export default function ConversationMessages() {
             }
         }
 
-        fetchconversationMessages(40,2); // TODO Remplacer les id par les valeur Context
+        fetchconversationMessages(40, 2); // TODO Remplacer les id par les valeur Context
     }, []);
 
   return (

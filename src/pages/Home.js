@@ -30,6 +30,9 @@ export default function Home() {
       {/*<Link className="App-link" to={`/companies`}>*/}
       {/*  See List of Companies (Example)*/}
       {/*</Link>*/}
+        <Link className="App-link" to={`/offers`}>
+            See List of Offers
+        </Link>
         <Link className="App-link" to={`/createConversation`}>
             Create a Conversation
         </Link>

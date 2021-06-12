@@ -10,6 +10,7 @@ import Users from "./pages/Users";
 import CreateConversation from "./pages/CreateConversation";
 import CloseConversation from "./pages/CloseConversation";
 import SendMessage from "./pages/SendMessage";
+import Offers from "./pages/Offers";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
             <Route path="/users" component={Users} />
             <Route path="/companies" component={Companies} />
             <Route path="/appliers" component={Appliers} />
+            <Route path="/offers" component={Offers} />
             <Route path="/conversations" component={Conversations} />
             <Route path="/createConversation" component={CreateConversation} />
             <Route path="/closeConversation" component={CloseConversation} />
