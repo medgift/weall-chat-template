@@ -48,16 +48,19 @@ export default function CreateConversation() {
   return (
       <div>
         <h1>Close a Conversation</h1>
-
-        <form onSubmit={handleSubmit}>
-          <select value={idUserEnterprise} onChange={handleIdUserEnterpriseChange}>
-            {companies.filter(c => c.nom !== "").map((c) => (
-                <option value={c.id_user}>{c.nom}</option>
-            ))}
-          </select>
-          <br/>
-          <button type="submit">Close Conversation</button>
-        </form>
+        {companies.filter(c => c.nom !== "").length > 0 ? (
+            <form onSubmit={handleSubmit}>
+              <select value={idUserEnterprise} onChange={handleIdUserEnterpriseChange}>
+                {companies.filter(c => c.nom !== "").map((c) => (
+                    <option value={c.id_user}>{c.nom}</option>
+                ))}
+              </select>
+              <br/>
+              <button type="submit">Close Conversation</button>
+            </form>
+        ) : (
+            <p>No company available &#x1F615;</p>
+        )}
       </div>
   );
 }

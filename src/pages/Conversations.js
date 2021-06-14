@@ -43,7 +43,7 @@ export default function Conversations() {
                       ))}
                   </ul>
               ) : (
-                  <p>No conversation yet</p>
+                  <p>No conversation yet &#x1F615;</p>
               )}
             </div>
               <br/>
