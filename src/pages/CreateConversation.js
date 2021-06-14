@@ -49,7 +49,7 @@ export default function CreateConversation() {
 
   return (
     <div>
-      <h1>Create a Conversation</h1>
+      <h1 className="headings">Create a Conversation</h1>
 
       <form onSubmit={handleSubmit}>
         {/*<input*/}
