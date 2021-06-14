@@ -1,11 +1,12 @@
 import React from "react";
-import { TOKEN_STORAGE_KEY } from "../utils/request";
+import {LOGGED_IN_USER_ID, TOKEN_STORAGE_KEY} from "../utils/request";
 import { Link } from "react-router-dom";
 
 export default function Home() {
   const logout = (e) => {
     e.preventDefault();
     localStorage.removeItem(TOKEN_STORAGE_KEY);
+    localStorage.removeItem(LOGGED_IN_USER_ID);
     window.location = "/";
   };
 
@@ -13,7 +14,7 @@ export default function Home() {
     <>
       {!localStorage.getItem(TOKEN_STORAGE_KEY) ? (
         <Link className="App-link" to={`/login`}>
-          Login (Example)
+          Login
         </Link>
       ) : (
         <a className="App-link" onClick={logout} href="/">

@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { Backend } from "../services/backend";
 import { useHistory } from "react-router-dom";
+import {LOGGED_IN_USER_ID} from "../utils/request";
 
 export default function CreateConversation() {
-  const [idUserApplier, setIdUserApplier] = useState("40"); // TODO Récupérer valeur depuis le Context
   const [idUserEnterprise, setIdUserEnterprise] = useState("");
   const [companies, setCompanies] = useState([]);
+
+  const loggedInUserId = localStorage.getItem(LOGGED_IN_USER_ID);
 
   // Load the companies on component mounting
   useEffect(() => {
@@ -24,10 +26,6 @@ export default function CreateConversation() {
 
   const history = useHistory();
 
-  const handleIdUserApplierChange = (e) => {
-    setIdUserApplier(e.target.value);
-  };
-
   const handleIdUserEnterpriseChange = (e) => {
     console.log(e.target.value);
     setIdUserEnterprise(e.target.value);
@@ -38,7 +36,7 @@ export default function CreateConversation() {
     e.preventDefault();
 
     try {
-      await Backend.closeConversation(idUserApplier, idUserEnterprise);
+      await Backend.closeConversation(loggedInUserId, idUserEnterprise);
 
       // Redirect to the home page
       history.push("/");
@@ -52,24 +50,8 @@ export default function CreateConversation() {
         <h1>Close a Conversation</h1>
 
         <form onSubmit={handleSubmit}>
-          {/*<input*/}
-          {/*  required*/}
-          {/*  placeholder="id applier"*/}
-          {/*  type="text"*/}
-          {/*  onChange={handleIdUserApplierChange}*/}
-          {/*  value={idUserApplier}*/}
-          {/*/>*/}
-          {/*<br />*/}
-          {/*<input*/}
-          {/*  required*/}
-          {/*  placeholder="id enterprise"*/}
-          {/*  type="text"*/}
-          {/*  onChange={handleIdUserEnterpriseChange}*/}
-          {/*  value={idUserEnterprise}*/}
-          {/*/>*/}
-          {/*<br />*/}
           <select value={idUserEnterprise} onChange={handleIdUserEnterpriseChange}>
-            {companies.map((c) => (
+            {companies.filter(c => c.nom !== "").map((c) => (
                 <option value={c.id_user}>{c.nom}</option>
             ))}
           </select>
