@@ -1,0 +1,17 @@
+.companyName {
+    margin: 20px 0;
+    color: #1a7e76;
+    font-size: 1em;
+    display: compact;
+}
+
+.messageSent {
+    color: #cccccc;
+    font-size: 1em;
+    font-style: italic;
+}
+
+.postulant {
+    color: #1a7e76;
+    font-size: 0.5em;
+}

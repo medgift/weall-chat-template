@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { Backend } from "../services/backend";
 import { useHistory } from "react-router-dom";
+import Companies from "./Companies";
 
 export default function CreateConversation() {
   const [idUserApplier, setIdUserApplier] = useState("40"); // TODO Récupérer valeur depuis le Context
   const [idUserEnterprise, setIdUserEnterprise] = useState("");
+  const [companyName, setCompanyName] = useState("");
 
   const history = useHistory();
 
@@ -16,6 +18,10 @@ export default function CreateConversation() {
     setIdUserEnterprise(e.target.value);
   };
 
+  const handleCompanyName = (e) => {
+    setCompanyName(e.target.value);
+  };
+
   const handleSubmit = async (e) => {
     // Stop the browser from submitting in the "traditional" way
     e.preventDefault();
@@ -23,7 +29,8 @@ export default function CreateConversation() {
     try {
       console.log("applier: " + idUserApplier);
       console.log("enterprise: " + idUserEnterprise);
-      await Backend.createConversation(idUserApplier, idUserEnterprise);
+      console.log("entrepriseName: " + companyName);
+      await Backend.createConversation(idUserApplier, idUserEnterprise, companyName);
 
       // Redirect to the home page
       history.push("/");
@@ -34,7 +41,7 @@ export default function CreateConversation() {
 
   return (
     <div>
-      <h1>Create a Conversation</h1>
+      <h1 className="headings">Create a Conversation</h1>
 
       <form onSubmit={handleSubmit}>
         <input
@@ -53,8 +60,17 @@ export default function CreateConversation() {
           value={idUserEnterprise}
         />
         <br />
+        <input
+            required
+            placeholder="enterpriseName"
+            type="text"
+            onChange={handleCompanyName}
+            value={companyName}
+        />
+        <br />
         <button type="submit">Create Conversation</button>
       </form>
+      <Companies/>
     </div>
   );
 }

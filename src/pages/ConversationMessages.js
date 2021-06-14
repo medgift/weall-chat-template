@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Backend } from "../services/backend";
+import Messages from "../components/messages/Messages"
 import SendMessage from "./SendMessage";
+import "./pagesStyle.css";
 
 export default function ConversationMessages(props) {
 
@@ -22,12 +24,10 @@ export default function ConversationMessages(props) {
     }, [props.user2, props.newMessage]);
 
   return (
-      <div>
-        <h1>Showing Conversation's Messages</h1>
+      <div className="col-sm-8">
+        <h1 className="headings">Your Messages</h1>
         <ul>
-          {conversationMessages.map((c, index) => (
-              <li key={index}>{c.message}</li>
-          ))}
+         <Messages messages = {conversationMessages}/>
         </ul>
       </div>
   );

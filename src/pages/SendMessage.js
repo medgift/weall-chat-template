@@ -31,7 +31,7 @@ export default function SendMessage(props) {
   };
 
   return (
-    <div>
+    <div className="col-sm-4">
       <ConversationMessages user1={props.user1} user2={props.user2} newMessage={newMessage}></ConversationMessages>
       <h1>Send a Message</h1>
 
@@ -60,7 +60,7 @@ export default function SendMessage(props) {
             value={message}
         />
         <br />
-        <button type="submit">Send Message</button>
+        <button type="submit" className="button">Send Message</button>
       </form>
     </div>
   );

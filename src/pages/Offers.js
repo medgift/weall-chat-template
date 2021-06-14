@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Backend } from "../services/backend";
+import OffersCards from "../components/offers/offerCard";
 
 export default function Offers() {
   // Hold the list of appliers in the component state
@@ -21,12 +22,8 @@ export default function Offers() {
 
   return (
     <div>
-      <h1>List of Offers</h1>
-      <ul>
-        {offers.map((o) => (
-          <li key={o.id_offre}>{o.nom}</li>
-        ))}
-      </ul>
+      <h1 className="headings">List of Offers</h1>
+     <OffersCards offers={offers}/>
     </div>
   );
 }
