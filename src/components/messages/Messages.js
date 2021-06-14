@@ -5,7 +5,6 @@ import {LOGGED_IN_USER_ID} from "../../utils/request";
 export default function ConversationMessages({messages}) {
 
     const loggedInUserId = localStorage.getItem(LOGGED_IN_USER_ID);
-    const messagesCount = messages.length;
 
     return (
         <div>

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Backend } from "../services/backend";
 import { useHistory } from "react-router-dom";
-import {LOGGED_IN_USER_ID, TOKEN_STORAGE_KEY} from "../utils/request";
+import {LOGGED_IN_USER_ID} from "../utils/request";
 
 export default function CreateConversation() {
   const [idUserEnterprise, setIdUserEnterprise] = useState("");

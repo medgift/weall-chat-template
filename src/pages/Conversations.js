@@ -25,7 +25,7 @@ export default function Conversations() {
         }
 
         fetchConversations();
-    }, []);
+    }, [loggedInUserId]);
 
   return (
       <div className="container">
@@ -35,7 +35,6 @@ export default function Conversations() {
               {conversations.length > 0 ? (
                   <ul>
                       {conversations.map((c) => (
-
                           <li onClick={()=> {
                               setUser1(c.id_user1)
                               setUser2(c.id_user2)

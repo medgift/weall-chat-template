@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Backend } from "../services/backend";
 import Messages from "../components/messages/Messages"
-import SendMessage from "./SendMessage";
 import "./pagesStyle.css";
 
 export default function ConversationMessages(props) {
@@ -21,7 +20,7 @@ export default function ConversationMessages(props) {
         }
 
         fetchconversationMessages(props.user1, props.user2);
-    }, [props.user2, props.newMessage]);
+    }, [props.user1, props.user2, props.newMessage]);
 
   return (
       <div className="col-sm-8">

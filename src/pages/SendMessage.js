@@ -1,14 +1,10 @@
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import { Backend } from "../services/backend";
-import { useHistory } from "react-router-dom";
 import ConversationMessages from "./ConversationMessages";
 
 export default function SendMessage(props) {
-
   const [message, setMessage] = useState("");
   const [newMessage, setNewMessage] = useState(0);
-
-  const history = useHistory();
 
   const handleMessageChange = (e) => {
     setMessage(e.target.value);
@@ -21,8 +17,6 @@ export default function SendMessage(props) {
     try {
       await Backend.sendMessage(props.user1, props.user2, message);
 
-      // Redirect to the home page
-      //history.push("/");
       setMessage("");
       setNewMessage(newMessage+1);
     } catch (e) {
