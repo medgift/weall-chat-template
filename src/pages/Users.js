@@ -1,30 +1,30 @@
 import React, { useEffect, useState } from "react";
 import { Backend } from "../services/backend";
 
-export default function Companies() {
+export default function Users() {
   // Hold the list of companies in the component state
-  const [companies, setCompanies] = useState([]);
+  const [users, setUsers] = useState([]);
 
   // Load the companies on component mounting
   useEffect(() => {
-    async function fetchCompanies() {
+    async function fetchUsers() {
       try {
-        let companies = await Backend.companies();
-        setCompanies(companies);
+        let users = await Backend.getUsers();
+        setUsers(users);
       } catch (e) {
         console.error(e);
       }
     }
 
-    fetchCompanies();
+    fetchUsers();
   }, []);
 
   return (
     <div>
-      <h1>List of Companies</h1>
+      <h1>List of Users</h1>
       <ul>
-        {companies.map((c) => (
-          <li key={c.id_entreprise}>{c.nom}</li>
+        {users.map((u) => (
+          <li key={u.id_user}>{u.e_mail}</li>
         ))}
       </ul>
     </div>
