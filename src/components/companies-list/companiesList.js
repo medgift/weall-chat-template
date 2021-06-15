@@ -1,3 +1,4 @@
+
 import React from "react";
 
 export function CompaniesList ({companies}){
@@ -9,7 +10,7 @@ export function CompaniesList ({companies}){
                         <p>
                             {company.nom} {" "}
                             {company.telephone_responsable_RH} {" "}
-                              en plus {" "}
+                            en plus {" "}
                             {company.description}
                         </p>
                     </div>
