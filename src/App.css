@@ -3,16 +3,51 @@
 }
 
 .App-header {
-  background-color: #282c34;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
 }
 
 .App-link {
   color: #61dafb;
+}
+
+.App.light{
+  background-color: white;
+  color: black;
+}
+
+.App.dark{
+  background-color: black;
+  color: white;
+}
+
+.btn-toggle{
+  position: fixed;
+  top: 20px;
+  right: 25px;
+  width: 50px;
+  height: 50px;
+  background-color: black;
+  border: 1px solid black;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.btn-toggle.goLight{
+  background: white;
+  color: black;
+}
+
+.btn-toggle.goDark{
+  background: black;
+  color: white;
 }

@@ -1,6 +1,7 @@
-import React from "react";
+import React, {useContext} from "react";
 import {LOGGED_IN_USER_ID, TOKEN_STORAGE_KEY} from "../utils/request";
 import { Link } from "react-router-dom";
+import {ThemeContext} from "../Context/ThemeContext";
 
 export default function Home() {
   const logout = (e) => {
@@ -9,6 +10,8 @@ export default function Home() {
     localStorage.removeItem(LOGGED_IN_USER_ID);
     window.location = "/";
   };
+
+  const {theme} = useContext(ThemeContext);
 
   return (
     <>
@@ -49,6 +52,6 @@ export default function Home() {
         <Link className="App-link" to={`/closeConversation`}>
             Close a Conversation
         </Link>
-    </>
+        </>
   );
 }
