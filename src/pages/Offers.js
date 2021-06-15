@@ -1,32 +1,29 @@
 import React, { useEffect, useState } from "react";
 import { Backend } from "../services/backend";
+import OffersCards from "../components/offers/offerCard";
 
 export default function Offers() {
-    // Hold the list of appliers in the component state
-    const [offers, setOffers] = useState([]);
+  // Hold the list of appliers in the component state
+  const [offers, setOffers] = useState([]);
 
-    // Load the companies on component mounting
-    useEffect(() => {
-        async function fetchOffers(1) {
-            try {
-                let offers = await Backend.offers();
-                setOffers(offers);
-            } catch (e) {
-                console.error(e);
-            }
-        }
+  // Load the companies on component mounting
+  useEffect(() => {
+    async function fetchOffers() {
+      try {
+        let offers = await Backend.getOffers();
+        setOffers(offers);
+      } catch (e) {
+        console.error(e);
+      }
+    }
 
-        fetchOffers();
-    }, []);
+    fetchOffers();
+  }, []);
 
-    return (
-        <div>
-            <h1>List of Offers</h1>
-            <ul>
-                {appliers.map((c) => (
-                    <li key={c.id_postulant}>{c.nom + " " + c.prenom}</li>
-                ))}
-            </ul>
-        </div>
-    );
+  return (
+    <div>
+      <h1 className="headings">List of Offers</h1>
+     <OffersCards offers={offers}/>
+    </div>
+  );
 }

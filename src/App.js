@@ -1,30 +1,46 @@
 import "./App.css";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import Conversation from "./pages/Conversation";
+import Conversations from "./pages/Conversations";
 import ConversationMessages from "./pages/ConversationMessages";
-import Companies from "./pages/Companies";
 import Login from "./pages/Login";
 import Home from "./pages/Home";
 import Appliers from "./pages/Appliers";
+import Users from "./pages/Users";
+import CreateConversation from "./pages/CreateConversation";
+import CloseConversation from "./pages/CloseConversation";
+import SendMessage from "./pages/SendMessage";
+import Offers from "./pages/Offers";
+import React, {useContext} from 'react';
+import ThemeBotton from "./components/BtnToggle/ThemeButton";
+import {ThemeContext} from "./Context/ThemeContext";
+
 
 function App() {
+
+  const {darkMode} = useContext(ThemeContext)
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>Welcome to the WeAll Chat</p>
-        <BrowserRouter>
-          <Switch>
-            <Route path="/" exact component={Home} />
-            <Route path="/companies" component={Companies} />
-            <Route path="/appliers" component={Appliers} />
-            <Route path="/conversation" component={Conversation} />
-            <Route path="/conversationMessages" component={ConversationMessages} />
-            <Route path="/login" component={Login} />
-          </Switch>
-        </BrowserRouter>
-      </header>
-    </div>
+        <div className={darkMode ? "App dark" : "App light"}>
+            <header className="App-header">
+              <p>Welcome to the WeAll Chat</p>
+              <BrowserRouter>
+                <Switch>
+                  <Route path="/" exact component={Home} />
+                  <Route path="/users" component={Users} />
+                  <Route path="/appliers" component={Appliers} />
+                  <Route path="/offers" component={Offers} />
+                  <Route path="/conversations" component={Conversations} />
+                  <Route path="/createConversation" component={CreateConversation} />
+                  <Route path="/closeConversation" component={CloseConversation} />
+                  <Route path="/conversationMessages" component={ConversationMessages} />
+                  <Route path="/sendMessage" component={SendMessage} />
+                  <Route path="/login" component={Login} />
+                </Switch>
+              </BrowserRouter>
+            </header>
+          <ThemeBotton/>
+        </div>
   );
 }
+
 
 export default App;

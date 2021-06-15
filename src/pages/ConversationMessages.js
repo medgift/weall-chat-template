@@ -1,36 +1,34 @@
 import React, { useEffect, useState } from "react";
 import { Backend } from "../services/backend";
-import {CompaniesList} from "../components/companies-list/companiesList";
-import Companies from "./Companies";
+import Messages from "../components/messages/Messages"
+import "./pagesStyle.css";
 
-export default function ConversationMessages() {
+export default function ConversationMessages(props) {
+
     const [conversationMessages, setConversationMessages] = useState([]);
+
 
     // Load the companies on component mounting
     useEffect(() => {
         async function fetchconversationMessages(idUser1, idUser2) {
             try {
-                let conversationMessages = await Backend.conversationMessages(idUser1,idUser2);
+                let conversationMessages = await Backend.getConversationMessages(idUser1,idUser2);
                 setConversationMessages(conversationMessages);
-                console.log(conversationMessages);
             } catch (e) {
                 console.error(e);
             }
         }
 
-        fetchconversationMessages(1,2); // Mettre ici les id pour tester
-    }, []);
+        fetchconversationMessages(props.user1, props.user2);
+    }, [props.user1, props.user2, props.newMessage]);
 
-    return (
-        <div>
-            <h1>Showing Conversation's Messages</h1>
-            <ul>
-                {conversationMessages.map((c) => (
-                    <li key={c.id_user1}>{c.message}</li>
-                ))}
-            </ul>
-           <Companies />
-        </div>
-    );
+  return (
+      <div className="col-sm-8">
+        <h1 className="headings">Your Messages</h1>
+        <ul>
+         <Messages messages = {conversationMessages}/>
+        </ul>
+      </div>
+  );
 
 }
